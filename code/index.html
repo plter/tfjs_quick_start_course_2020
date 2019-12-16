@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="node_modules/@tensorflow/tfjs/dist/tf.min.js"></script>
+</head>
+<body>
+<div style="display: flex;flex-direction: row;padding: 10px;" id="vueapp">
+    <div class="card">
+        <div class="card-header">
+            此处写数字
+        </div>
+        <div class="card-body">
+            <canvas ref="drawCanvas" width="200" height="200" @mousedown="canvasMouseDownHandler"
+                    @mousemove="canvasMouseMoveHandler"
+                    @mouseup="canvasMouseUpHandler"
+                    style="border-style: dashed;display: block;"></canvas>
+            <div style="text-align: center;">
+                <button class="btn btn-primary" style="margin-top: 10px;" @click="btnClearCanvasClickedHandler">清空
+                </button>
+            </div>
+        </div>
+        <div class="card-header">图像数据预览</div>
+        <div class="card-body" style="text-align: center;background-color: black;">
+            <canvas width="28" height="28" style="border-style: solid;border-color: white;"
+                    ref="previewCanvas"></canvas>
+        </div>
+    </div>
+    <div class="card" style="margin-left: 10px;">
+        <div class="card-header">训练</div>
+        <div class="card-body">
+            关联数字：
+            <input type="text" v-model="targetNum">
+            <button class="btn btn-primary" @click="btnTrainClickedHandler">训练</button>
+
+            <div>
+                <div v-html="trainStatus"></div>
+            </div>
+        </div>
+        <div class="card-header">识别</div>
+        <div class="card-body">
+            <button class="btn btn-primary" @click="btnPredictClickedHandler">预测</button>
+            <div>{{result}}</div>
+        </div>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

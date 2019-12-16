@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- Load TensorFlow.js. This is required to use MobileNet. -->
+<script src="node_modules/@tensorflow/tfjs/dist/tf.min.js"></script>
+<!-- Load the MobileNet model. -->
+<script src="node_modules/@tensorflow-models/mobilenet/dist/mobilenet.min.js"></script>
+
+<!-- Replace this with your image. Make sure CORS settings allow reading the image! -->
+<img id="img" src="cat.jpg" width="300"/>
+
+<!-- Place your code in the script tag below. You can also use an external .js file -->
+<script>
+    // Notice there is no 'import' statement. 'mobilenet' and 'tf' is
+    // available on the index-page because of the script tag above.
+
+    const img = document.getElementById('img');
+
+    // Load the model.
+    mobilenet.load({
+        version: 1,
+        modelUrl: "model/model.json"
+    }).then(model => {
+        // Classify the image.
+        model.classify(img).then(predictions => {
+            console.log('Predictions: ');
+            console.log(predictions);
+        });
+    });
+</script>
+</body>
+</html>
