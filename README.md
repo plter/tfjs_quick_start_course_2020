@@ -1,5 +1,9 @@
 # tfjs_quick_start_course_2020
-tfjs极简入门视频教程
+tfjs极简入门视频教程 
+
+# 视频教程  
+
+[https://yunp.top/p/v/1515](https://yunp.top/p/v/1515)
 
 # 课程目录
 
